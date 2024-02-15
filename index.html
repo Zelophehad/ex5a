@@ -46,15 +46,9 @@
 			   return 1;
 			}//จบฟังชั่น vailidate
 
-	    $(document).ready(function(){
-			$("button").click(function(){//คำสั่งดักจับevnที่ปุ่ม
-			   var t = $('#temp').val();//celsius
-			   var u = $('#unit').val();
-			   
-			  if(vailidate(t) == 0) return;//เป็นคำสั่งเรียกใช้ ถ้าฟังชั่น vailidate เป็น 0 ก็ให้หยุดการทำงานตรงนี้เลย
-			   
-			   var t1;
-			   var u1;
+		function calculate(t,u){
+				var t1;
+				var u1;
 			   
 			   if(u == "F"){
 					t1 = t * (9/5) + 32;
@@ -66,6 +60,18 @@
 					t1 = t * (4/5);
 					u1 = "Kelvin";
 			   }
+			return {"temp" :t1, "unit" :u1};//รีเทิร์นเป็นเจซั่นแทน "คีย์" :ตัวแปร
+			}	
+
+	    $(document).ready(function(){
+			$("button").click(function(){//คำสั่งดักจับevenที่ปุ่ม
+			   var t = $('#temp').val();//celsius
+			   var u = $('#unit').val();
+			   
+			  if(vailidate(t) == 0) return;//เป็นคำสั่งเรียกใช้ ถ้าฟังชั่น vailidate เป็น 0 ก็ให้หยุดการทำงานตรงนี้เลย
+			   
+			  var result = calculate(t,u);//เอาผลลับแคลคุเลทมาเก็บที่ตัวแปรรีซอล
+
 			   
 			   alert("Temperature is "+t1+" in "+u1);//คำสั่งdisplayผลแต่เป็นแบบอเลิร์ตที่เ้งขึ้นมา
 			});
