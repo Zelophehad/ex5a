@@ -73,7 +73,8 @@
 			  var result = calculate(t,u);//เอาผลลับแคลคุเลทมาเก็บที่ตัวแปรรีซอล
 
 			   
-			   alert("Temperature is "+t1+" in "+u1);//คำสั่งdisplayผลแต่เป็นแบบอเลิร์ตที่เ้งขึ้นมา
+			  // alert("Temperature is "+t1+" in "+u1);//คำสั่งdisplayผลแต่เป็นแบบอเลิร์ตที่เ้งขึ้นมา
+			  $("#result").html("Tempurature is <b>"+result.temp+"</b> in "+result.unit);//สไตล์การเขียนแบบเจคิวรี่ แสดงผล
 			});
 		});
 	</script>
