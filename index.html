@@ -32,21 +32,26 @@
 	</div>
 	
 	<script>
+		function vailidate(t){ 
+			if(isNaN(t)){//isNaNคือ ถามว่าใช่นัมเบอมั้ย
+			msg = "Please verify whether the temperature value is correct!!!";
+			alert(msg);
+			return 0;//0หมายถึงว่าต้องเเจ้งเตือน แต่ถ้ามันไม่เข้าifตรงไหนเลยมันจะรีเทิร์นไปเป็น1เลย
+			   }
+			if(!(t >= -100 && t <= 100)){
+			msg = "Tempurature entered (in Celsius) must be between 0 and 100 C'";
+			alert(msg);
+			return 0;
+			   }
+			   return 1;
+			}//จบฟังชั่น vailidate
+
 	    $(document).ready(function(){
-			$("button").click(function(){
+			$("button").click(function(){//คำสั่งดักจับevnที่ปุ่ม
 			   var t = $('#temp').val();//celsius
 			   var u = $('#unit').val();
 			   
-			   if(isNaN(t)){
-					msg = "Please verify whether the temperature value is correct!!!";
-					alert(msg);
-					return;
-			   }
-			   if(!(t >= -100 && t <= 100)){
-					msg = "Tempurature entered (in Celsius) must be between 0 and 100 C'";
-					alert(msg);
-					return;
-			   }
+			  if(vailidate(t) == 0) return;//เป็นคำสั่งเรียกใช้ ถ้าฟังชั่น vailidate เป็น 0 ก็ให้หยุดการทำงานตรงนี้เลย
 			   
 			   var t1;
 			   var u1;
@@ -62,7 +67,7 @@
 					u1 = "Kelvin";
 			   }
 			   
-			   alert("Temperature is "+t1+" in "+u1);
+			   alert("Temperature is "+t1+" in "+u1);//คำสั่งdisplayผลแต่เป็นแบบอเลิร์ตที่เ้งขึ้นมา
 			});
 		});
 	</script>
